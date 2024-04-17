@@ -51,21 +51,16 @@ public class MyFrame extends JFrame{
 		setTime();
 	}
 	public void setTime() {
-		while(true) {
-		time = timeFormat.format(Calendar.getInstance().getTime());
-		timeLabel.setText(time);
-		
-		day = dayFormat.format(Calendar.getInstance().getTime());
-		dayLabel.setText(day);
-		
-		date = dateFormat.format(Calendar.getInstance().getTime());
-		dateLabel.setText(date);
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		}
+	    Timer timer = new Timer(1000, e -> {
+            time = timeFormat.format(Calendar.getInstance().getTime());
+            timeLabel.setText(time);
+
+            day = dayFormat.format(Calendar.getInstance().getTime());
+            dayLabel.setText(day);
+
+            date = dateFormat.format(Calendar.getInstance().getTime());
+            dateLabel.setText(date);
+            });
+            timer.start();
 	}
 }
